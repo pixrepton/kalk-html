@@ -1,0 +1,70 @@
+#ai-coach-dock {
+  position: fixed;
+  left: 50%; bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 9999;
+  min-width: 240px; max-width: 98vw;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(194,1,24,0.07);
+  border: 1.5px solid #C20118;
+  font-family: 'Poppins',sans-serif;
+  padding: 6px 22px 6px 14px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px;
+  animation: fadeInDock 0.5s;
+}
+
+@keyframes fadeInDock { from { opacity:0; transform: translateY(32px) scale(0.95); } to { opacity:1; transform: translateY(0) scale(1);} }
+
+.ai-coach-dock__content {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+}
+.ai-coach-dock__icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 10px;
+  background: linear-gradient(135deg, #fff 60%, #f4f7fb 100%);
+  box-shadow: 0 2px 8px rgba(194,1,24,0.07);
+  margin-right: 4px; position: relative;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.ai-coach-dock__icon svg { display: block;}
+/* Loader (spinner) styl */
+.ai-coach-dock__loader {
+  position: absolute; left: 0; top: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  animation: aiLoaderFade 1s infinite alternate;
+}
+@keyframes aiLoaderFade { 0% {opacity:0.6;} 100% {opacity:1;} }
+.ai-coach-dock__text {
+  color: #2D3657;
+  font-size: 15px; font-weight: 600;
+  letter-spacing: 0.03em; white-space: nowrap;
+  transition: color 0.2s;
+}
+.ai-coach-dock__btn {
+  background: none; border: none; color: #C20118;
+  font-size: 20px; margin-left: 6px; cursor: pointer;
+  opacity: 0.85; border-radius: 5px; padding: 2px 8px;
+  transition: background 0.2s, color 0.2s;
+}
+.ai-coach-dock__btn:focus { outline: 2px solid #C20118;}
+.ai-coach-dock__btn:hover { background: rgba(194,1,24,0.09);}
+
+/* Tryb pauzowany */
+.ai-coach-paused {
+  opacity: 0.7;
+  border-color: #999;
+}
+
+.ai-coach-paused .ai-coach-dock__text {
+  color: #666;
+}
+
+@media (max-width: 540px) {
+  #ai-coach-dock { bottom: 9px; padding: 4px 5px 4px 7px; min-width: 140px; }
+  .ai-coach-dock__text { font-size: 12px; }
+  .ai-coach-dock__icon, .ai-coach-dock__loader { width: 26px; height: 26px;}
+}
